@@ -4,6 +4,8 @@ import com.teste.criar.model.CorridaInfo;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,11 +29,11 @@ public class CorridaInfoConverter  implements Converter<String, CorridaInfo>{
         for (int i = 0; i < horas.size(); i++) {
             CorridaInfo corridaInfo = new CorridaInfo();
 
-            corridaInfo.setHora(horas.get(i));
+            corridaInfo.setHora(LocalTime.parse(horas.get(i)));
             corridaInfo.setCodigoPiloto(codigosPilotos.get(i));
             corridaInfo.setPiloto(pilotos.get(i));
             corridaInfo.setNumeroVolta(Integer.valueOf(numeroVolta.get(i)));
-            corridaInfo.setTempoVolta(tempoVolta.get(i));
+            corridaInfo.setTempoVolta(stringToDuration(tempoVolta.get(i)));
             corridaInfo.setVelocidadeMediaVolta(new BigDecimal(velocidadeMediaVolta.get(1).replace(",",".")));
 
             corridaInfoList.add(corridaInfo);
@@ -55,5 +57,14 @@ public class CorridaInfoConverter  implements Converter<String, CorridaInfo>{
     private List<String> stringToList(String string){
         return Arrays.stream(string.trim().split("\n"))
                 .collect(Collectors.toList());
+    }
+
+    private Duration stringToDuration(String tempo){
+        String[] tempoDividido = tempo.replace(".", ":").split(":");
+        Duration duration = Duration.ofMinutes(Integer.valueOf(tempoDividido[0]));
+        duration = duration.plusSeconds(Integer.valueOf(tempoDividido[1]));
+        duration = duration.plusMillis(Integer.valueOf(tempoDividido[2]));
+
+        return duration;
     }
 }
