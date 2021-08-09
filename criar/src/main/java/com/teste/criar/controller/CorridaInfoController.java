@@ -1,20 +1,24 @@
 package com.teste.criar.controller;
 
 import com.teste.criar.model.CorridaInfo;
+import com.teste.criar.service.CorridaInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/")
 public class CorridaInfoController {
 
-    @GetMapping("/corridainfo")
+    @Autowired
+    private CorridaInfoService corridaInfoService;
+
+    @GetMapping("corridainfo")
     public List<CorridaInfo> getCorridaInfo(){
-
-
-
+        return corridaInfoService.getCorridaInfo();
     }
 }
