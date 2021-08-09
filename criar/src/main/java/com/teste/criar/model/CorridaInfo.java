@@ -1,14 +1,16 @@
 package com.teste.criar.model;
 
 import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.LocalTime;
 
 public class CorridaInfo {
 
-    private String hora;
+    private LocalTime hora;
     private String piloto;
     private String codigoPiloto;
     private Integer numeroVolta;
-    private String tempoVolta;
+    private Duration tempoVolta;
     private BigDecimal velocidadeMediaVolta;
 
     public String getCodigoPiloto() {
@@ -19,11 +21,11 @@ public class CorridaInfo {
         this.codigoPiloto = codigoPiloto;
     }
 
-    public String getHora() {
+    public LocalTime getHora() {
         return hora;
     }
 
-    public void setHora(String hora) {
+    public void setHora(LocalTime hora) {
         this.hora = hora;
     }
 
@@ -43,11 +45,11 @@ public class CorridaInfo {
         this.numeroVolta = numeroVolta;
     }
 
-    public String getTempoVolta() {
+    public Duration getTempoVolta() {
         return tempoVolta;
     }
 
-    public void setTempoVolta(String tempoVolta) {
+    public void setTempoVolta(Duration tempoVolta) {
         this.tempoVolta = tempoVolta;
     }
 
