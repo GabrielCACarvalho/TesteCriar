@@ -1,6 +1,7 @@
 package com.teste.criar.controller;
 
 import com.teste.criar.model.CorridaInfo;
+import com.teste.criar.model.ResultadoCorrida;
 import com.teste.criar.service.CorridaInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,5 +21,10 @@ public class CorridaInfoController {
     @GetMapping("corridainfo")
     public List<CorridaInfo> getCorridaInfo(){
         return corridaInfoService.getCorridaInfo();
+    }
+
+    @GetMapping("resultadoCorrida")
+    public List<ResultadoCorrida> getResultadosCorrida(){
+        return corridaInfoService.getResultadoCorrida();
     }
 }
