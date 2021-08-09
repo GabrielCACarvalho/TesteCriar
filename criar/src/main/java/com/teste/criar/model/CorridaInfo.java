@@ -6,9 +6,18 @@ public class CorridaInfo {
 
     private String hora;
     private String piloto;
+    private String codigoPiloto;
     private Integer numeroVolta;
     private String tempoVolta;
     private BigDecimal velocidadeMediaVolta;
+
+    public String getCodigoPiloto() {
+        return codigoPiloto;
+    }
+
+    public void setCodigoPiloto(String codigoPiloto) {
+        this.codigoPiloto = codigoPiloto;
+    }
 
     public String getHora() {
         return hora;
