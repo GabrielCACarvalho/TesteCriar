@@ -23,17 +23,17 @@ public class CorridaInfoService {
 
     private String getLog(){
         try {
-            Scanner input = new Scanner(new FileReader("/home/gabrielg/Área de Trabalho/testeCriar/logCorrida.txt"));
+            Scanner inputLog = new Scanner(new FileReader("/home/gabrielg/Área de Trabalho/testeCriar/logCorrida.txt"));
 
-            StringBuilder sb = new StringBuilder();
+            StringBuilder stringBuilder = new StringBuilder();
 
-            while(input.hasNext()){
-                sb.append(input.next());
-                sb.append(System.lineSeparator());
+            while(inputLog.hasNext()){
+                stringBuilder.append(inputLog.next());
+                stringBuilder.append(System.lineSeparator());
             }
-            input.close();
+            inputLog.close();
 
-            return sb.toString();
+            return stringBuilder.toString();
         } catch (IOException e) {
             throw new RuntimeException("ERRO NA INTERPRETACAO DO ARQUIVO DE LOG" + e);
         }

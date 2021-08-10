@@ -52,7 +52,6 @@ public class ResultadoCorrida  implements Comparable<ResultadoCorrida> {
 
     @Override
     public int compareTo(ResultadoCorrida resultadoCorrida) {
-        int x = getTempoTotalProva().compareTo(resultadoCorrida.getTempoTotalProva());
         return getTempoTotalProva().compareTo(resultadoCorrida.getTempoTotalProva());
     }
 }

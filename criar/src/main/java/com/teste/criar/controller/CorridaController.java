@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-public class CorridaInfoController {
+public class CorridaController {
 
     @Autowired
     private CorridaInfoService corridaInfoService;

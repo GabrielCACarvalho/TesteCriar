@@ -2,6 +2,7 @@ package com.teste.criar.converter;
 
 import com.teste.criar.model.CorridaInfo;
 import com.teste.criar.model.ResultadoCorrida;
+import com.teste.criar.utils.TesteCriarUtils;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
@@ -19,7 +20,7 @@ public class ResultadoCorridaConverter implements Converter<List<CorridaInfo>, L
         int cont = 0;
         for (ResultadoCorrida resultadoCorrida : resultadosCorrida){
             cont++;
-            resultadoCorrida.setPosicaoChegada(String.valueOf(cont) + "º Lugar");
+            resultadoCorrida.setPosicaoChegada(cont + "º Lugar");
         }
 
         return resultadosCorrida;
@@ -32,7 +33,7 @@ public class ResultadoCorridaConverter implements Converter<List<CorridaInfo>, L
                 .map(CorridaInfo::getCodigoPiloto)
                 .collect(Collectors.toList());
 
-        for (String codigo: removeDuplicatas(todosCodigos)) {
+        for (String codigo: TesteCriarUtils.removeDuplicatas(todosCodigos)) {
 
             List<CorridaInfo> corridaInfoPilotoAtual = corridaInfos.stream()
                     .filter(corridaInfo -> codigo.equals(corridaInfo.getCodigoPiloto()))
@@ -55,18 +56,6 @@ public class ResultadoCorridaConverter implements Converter<List<CorridaInfo>, L
 
             resultadosCorridas.add(resultadoCorrida);
         }
-
         return resultadosCorridas;
-    }
-
-    private <T> List<T> removeDuplicatas(List<T> list){
-        List<T> novaLista = new ArrayList<>();
-
-        for (T item: list) {
-            if (!novaLista.contains(item))
-                novaLista.add(item);
-        }
-
-        return novaLista;
     }
 }

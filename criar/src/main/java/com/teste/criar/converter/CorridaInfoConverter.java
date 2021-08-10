@@ -1,6 +1,7 @@
 package com.teste.criar.converter;
 
 import com.teste.criar.model.CorridaInfo;
+import com.teste.criar.utils.TesteCriarUtils;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -19,12 +20,12 @@ public class CorridaInfoConverter  implements Converter<String, List<CorridaInfo
 
         String[] list = log.split("Hora|Piloto|Nº\nVolta|Tempo\nVolta|Velocidade\nmédia\nda\nvolta");
 
-        List<String> horas = stringToList(list[1]);
+        List<String> horas = TesteCriarUtils.stringToList(list[1]);
         List<String> codigosPilotos = convertCodigoPiloto(list[2]);
         List<String> pilotos = convertPilotos(list[2]);
-        List<String> numeroVolta = stringToList(list[3]);
-        List<String> tempoVolta = stringToList(list[4]);
-        List<String> velocidadeMediaVolta = stringToList(list[5]);
+        List<String> numeroVolta = TesteCriarUtils.stringToList(list[3]);
+        List<String> tempoVolta = TesteCriarUtils.stringToList(list[4]);
+        List<String> velocidadeMediaVolta = TesteCriarUtils.stringToList(list[5]);
 
         for (int i = 0; i < horas.size(); i++) {
             CorridaInfo corridaInfo = new CorridaInfo();
@@ -33,8 +34,8 @@ public class CorridaInfoConverter  implements Converter<String, List<CorridaInfo
             corridaInfo.setCodigoPiloto(codigosPilotos.get(i));
             corridaInfo.setPiloto(pilotos.get(i));
             corridaInfo.setNumeroVolta(Integer.valueOf(numeroVolta.get(i)));
-            corridaInfo.setTempoVolta(stringToDuration(tempoVolta.get(i)));
-            corridaInfo.setVelocidadeMediaVolta(new BigDecimal(velocidadeMediaVolta.get(1).replace(",",".")));
+            corridaInfo.setTempoVolta(TesteCriarUtils.stringToDuration(tempoVolta.get(i)));
+            corridaInfo.setVelocidadeMediaVolta(new BigDecimal(velocidadeMediaVolta.get(i).replace(",",".")));
 
             corridaInfoList.add(corridaInfo);
         }
@@ -43,28 +44,18 @@ public class CorridaInfoConverter  implements Converter<String, List<CorridaInfo
     }
 
     private List<String> convertCodigoPiloto(String pilotos){
-        String[] listaSemHifem = pilotos.split("\n–\n");
+        String[] listaSeparada = separarPorHifen(pilotos);
 
-        return Arrays.stream(listaSemHifem[0].trim().split("\n")).collect(Collectors.toList());
+        return Arrays.stream(listaSeparada[0].trim().split("\n")).collect(Collectors.toList());
     }
 
     private List<String> convertPilotos(String pilotos) {
-        String[] listaSemHifem = pilotos.split("\n–\n");
+        String[] listaSeparada = pilotos.split("\n–\n");
 
-        return Arrays.stream(listaSemHifem[12].trim().split("\n")).collect(Collectors.toList());
+        return Arrays.stream(listaSeparada[12].trim().split("\n")).collect(Collectors.toList());
     }
 
-    private List<String> stringToList(String string){
-        return Arrays.stream(string.trim().split("\n"))
-                .collect(Collectors.toList());
-    }
-
-    private Duration stringToDuration(String tempo){
-        String[] tempoDividido = tempo.replace(".", ":").split(":");
-        Duration duration = Duration.ofMinutes(Integer.valueOf(tempoDividido[0]));
-        duration = duration.plusSeconds(Integer.valueOf(tempoDividido[1]));
-        duration = duration.plusMillis(Integer.valueOf(tempoDividido[2]));
-
-        return duration;
+    private String[] separarPorHifen(String pilotos){
+        return pilotos.split("\n–\n");
     }
 }
