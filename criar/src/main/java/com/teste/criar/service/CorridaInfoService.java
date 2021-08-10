@@ -1,7 +1,6 @@
 package com.teste.criar.service;
 
 import com.teste.criar.converter.CorridaInfoConverter;
-import com.teste.criar.converter.ResultadoCorridaConverter;
 import com.teste.criar.model.CorridaInfo;
 import com.teste.criar.model.ResultadoCorrida;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +17,9 @@ public class CorridaInfoService {
     @Autowired
     private CorridaInfoConverter corridaInfoConverter;
 
-    @Autowired
-    private ResultadoCorridaConverter resultadoCorridaConverter;
-
     public List<CorridaInfo> getCorridaInfo(){
         return corridaInfoConverter.from(getLog());
     }
-
-    /*public List<ResultadoCorrida> getResultadosCorrida(){
-        List<CorridaInfo> corridaInfoList = getCorridaInfo();
-
-        return resultadoCorridaConverter.from(corridaInfoList);
-    }*/
 
     private String getLog(){
         try {
@@ -47,9 +37,5 @@ public class CorridaInfoService {
         } catch (IOException e) {
             throw new RuntimeException("ERRO NA INTERPRETACAO DO ARQUIVO DE LOG" + e);
         }
-    }
-
-    public List<ResultadoCorrida> getResultadoCorrida() {
-        return null;
     }
 }

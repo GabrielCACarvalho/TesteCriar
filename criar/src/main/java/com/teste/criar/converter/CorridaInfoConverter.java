@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class CorridaInfoConverter  implements Converter<String, CorridaInfo>{
+public class CorridaInfoConverter  implements Converter<String, List<CorridaInfo>>{
     @Override
     public List<CorridaInfo> from(String log) {
         List<CorridaInfo> corridaInfoList = new ArrayList<>();

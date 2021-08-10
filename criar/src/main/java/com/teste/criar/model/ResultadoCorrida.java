@@ -2,7 +2,7 @@ package com.teste.criar.model;
 
 import java.time.Duration;
 
-public class ResultadoCorrida {
+public class ResultadoCorrida  implements Comparable<ResultadoCorrida> {
 
     private String posicaoChegada;
     private String codigoPiloto;
@@ -48,5 +48,11 @@ public class ResultadoCorrida {
 
     public void setTempoTotalProva(Duration tempoTotalProva) {
         this.tempoTotalProva = tempoTotalProva;
+    }
+
+    @Override
+    public int compareTo(ResultadoCorrida resultadoCorrida) {
+        int x = getTempoTotalProva().compareTo(resultadoCorrida.getTempoTotalProva());
+        return getTempoTotalProva().compareTo(resultadoCorrida.getTempoTotalProva());
     }
 }
