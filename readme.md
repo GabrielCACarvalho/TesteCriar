@@ -33,6 +33,10 @@ Versão do java utilizada e as dependêcias utilizadas estão a baixo:
 </dependencies>
 ```
 
+## Funcionalidade
+
+A partir do input, o programa monta um resultado com as seguintes informações: Posição chegada, pódigo piloto, nome piloto, qtde voltas completadas, tempo total de prova, melhor volta de cada piloto e a melhor volta da corrida.
+
 ## Input
 
 O projeto faz a conversão do log a baixo e somente do log a baixo, caso tenha alguma modificação no log, deve haver uma modificação na conversão também.
