@@ -33,8 +33,8 @@ public class ResultadoCorridaDTOConverter implements Converter<List<ResultadoCor
 
         tempo = tempo.replace("PT","");
 
-        String minutos = "";
-        String segundos = "";
+        String minutos = "0";
+        String segundos = "0";
 
         String[] tempoDividido = tempo.split("M|S");
 
