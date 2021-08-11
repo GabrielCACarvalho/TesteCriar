@@ -1,26 +1,206 @@
-# Foobar
+# Teste Grupo Criar
 
-Foobar is a Python library for dealing with word pluralization.
+Este é uma aplicação feito em spring para fazer o display de informações de um log de uma corrida de kart.
 
-## Installation
+## Java Version e Dependências
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Versão do java utilizada e as dependêcias utilizadas estão a baixo:
 
-```bash
-pip install foobar
+```
+<properties>
+	<java.version>1.8</java.version>
+</properties>
+<dependencies>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter</artifactId>
+	</dependency>
+		<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-devtools</artifactId>
+		<scope>runtime</scope>
+		<optional>true</optional>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+</dependencies>
 ```
 
-## Usage
+## Input
 
-```python
-import foobar
+O projeto faz a conversão do log a baixo e somente do log a baixo, caso tenha alguma modificação no log, deve haver uma modificação na conversão também.
 
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+```Hora
+23:49:08.277
+23:49:10.858
+23:49:11.075
+23:49:12.667
+23:49:30.976
+23:50:11.447
+23:50:14.860
+23:50:15.057
+23:50:17.472
+23:50:37.987
+23:51:14.216
+23:51:18.576
+23:51:19.044
+23:51:21.759
+23:51:46.691
+23:52:01.796
+23:52:17.003
+23:52:22.586
+23:52:22.120
+23:52:25.975
+23:53:06.741
+23:53:39.660
+23:54:57.757
+Piloto
+038
+033
+002
+023
+015
+038
+033
+002
+023
+015
+038
+033
+002
+023
+015
+011
+038
+033
+002
+023
+015
+011
+011
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+F.MASSA
+R.BARRICHELLO
+K.RAIKKONEN
+M.WEBBER
+F.ALONSO
+F.MASSA
+R.BARRICHELLO
+K.RAIKKONEN
+M.WEBBER
+F.ALONSO
+F.MASSA
+R.BARRICHELLO
+K.RAIKKONEN
+M.WEBBER
+F.ALONSO
+S.VETTEL
+F.MASS
+R.BARRICHELLO
+K.RAIKKONEN
+M.WEBBER
+F.ALONSO
+S.VETTEL
+S.VETTEL
+Nº Volta
+1
+1
+1
+1
+1
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+1
+4
+4
+4
+4
+4
+2
+3
+Tempo Volta
+1:02.852
+1:04.352
+1:04.108
+1:04.414
+1:18.456
+1:03.170
+1:04.002
+1:03.982
+1:04.805
+1:07.011
+1:02.769
+1:03.716
+1:03.987
+1:04.287
+1:08.704
+3:31.315
+1:02.787
+1:04.010
+1:03.076
+1:04.216
+1:20.050
+1:37.864
+1:18.097
+Velocidade média da volta
+44,275
+43,243
+43,408
+43,202
+35,47
+44,053
+43,48
+43,493
+42,941
+41,528
+44,334
+43,675
+43,49
+43,287
+40,504
+13,169
+44,321
+43,474
+44,118
+43,335
+34,763
+28,435
+35,633
 ```
