@@ -1,59 +1,25 @@
 package com.teste.criar.dto;
 
+import java.util.List;
+
 public class ResultadoCorridaDTO {
 
-    private String posicaoChegada;
-    private String codigoPiloto;
-    private String nomePiloto;
-    private Integer qntVoltaCompletada;
-    private String tempoTotalProva;
-    private MelhorVoltaDTO melhorVoltaDTO;
+    private MelhorVoltaCorridaDTO melhorVoltaCorridaDTO;
+    private List<ResultadoCorridaPilotoDTO> resultadoCorridaPilotosDTO;
 
-    public MelhorVoltaDTO getMelhorVoltaDTO() {
-        return melhorVoltaDTO;
+    public MelhorVoltaCorridaDTO getMelhorVoltaCorridaDTO() {
+        return melhorVoltaCorridaDTO;
     }
 
-    public void setMelhorVoltaDTO(MelhorVoltaDTO melhorVoltaDTO) {
-        this.melhorVoltaDTO = melhorVoltaDTO;
+    public void setMelhorVoltaCorridaDTO(MelhorVoltaCorridaDTO melhorVoltaCorridaDTO) {
+        this.melhorVoltaCorridaDTO = melhorVoltaCorridaDTO;
     }
 
-    public String getPosicaoChegada() {
-        return posicaoChegada;
+    public List<ResultadoCorridaPilotoDTO> getResultadoCorridaPilotosDTO() {
+        return resultadoCorridaPilotosDTO;
     }
 
-    public void setPosicaoChegada(String posicaoChegada) {
-        this.posicaoChegada = posicaoChegada;
-    }
-
-    public String getCodigoPiloto() {
-        return codigoPiloto;
-    }
-
-    public void setCodigoPiloto(String codigoPiloto) {
-        this.codigoPiloto = codigoPiloto;
-    }
-
-    public String getNomePiloto() {
-        return nomePiloto;
-    }
-
-    public void setNomePiloto(String nomePiloto) {
-        this.nomePiloto = nomePiloto;
-    }
-
-    public Integer getQntVoltaCompletada() {
-        return qntVoltaCompletada;
-    }
-
-    public void setQntVoltaCompletada(Integer qntVoltaCompletada) {
-        this.qntVoltaCompletada = qntVoltaCompletada;
-    }
-
-    public String getTempoTotalProva() {
-        return tempoTotalProva;
-    }
-
-    public void setTempoTotalProva(String tempoTotalProva) {
-        this.tempoTotalProva = tempoTotalProva;
+    public void setResultadoCorridaPilotosDTO(List<ResultadoCorridaPilotoDTO> resultadoCorridaPilotosDTO) {
+        this.resultadoCorridaPilotosDTO = resultadoCorridaPilotosDTO;
     }
 }

@@ -2,7 +2,7 @@ package com.teste.criar.model;
 
 import java.time.Duration;
 
-public class MelhorVolta {
+public class MelhorVoltaPiloto {
 
     private Integer numeroVolta;
     private Duration tempoVolta;

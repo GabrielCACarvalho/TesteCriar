@@ -1,66 +1,25 @@
 package com.teste.criar.model;
 
-import java.time.Duration;
+import java.util.List;
 
-public class ResultadoCorrida  implements Comparable<ResultadoCorrida> {
+public class ResultadoCorrida {
 
-    private String posicaoChegada;
-    private String codigoPiloto;
-    private String nomePiloto;
-    private Integer qntVoltaCompletada;
-    private Duration tempoTotalProva;
-    private MelhorVolta melhorVolta;
+    private MelhorVoltaCorrida melhorVoltaCorrida;
+    private List<ResultadoCorridaPiloto> resultadoCorridaPilotos;
 
-    public MelhorVolta getMelhorVolta() {
-        return melhorVolta;
+    public MelhorVoltaCorrida getMelhorVoltaCorrida() {
+        return melhorVoltaCorrida;
     }
 
-    public void setMelhorVolta(MelhorVolta melhorVolta) {
-        this.melhorVolta = melhorVolta;
+    public void setMelhorVoltaCorrida(MelhorVoltaCorrida melhorVoltaCorrida) {
+        this.melhorVoltaCorrida = melhorVoltaCorrida;
     }
 
-    public String getPosicaoChegada() {
-        return posicaoChegada;
+    public List<ResultadoCorridaPiloto> getResultadoCorridaPilotos() {
+        return resultadoCorridaPilotos;
     }
 
-    public void setPosicaoChegada(String posicaoChegada) {
-        this.posicaoChegada = posicaoChegada;
-    }
-
-    public String getCodigoPiloto() {
-        return codigoPiloto;
-    }
-
-    public void setCodigoPiloto(String codigoPiloto) {
-        this.codigoPiloto = codigoPiloto;
-    }
-
-    public String getNomePiloto() {
-        return nomePiloto;
-    }
-
-    public void setNomePiloto(String nomePiloto) {
-        this.nomePiloto = nomePiloto;
-    }
-
-    public Integer getQntVoltaCompletada() {
-        return qntVoltaCompletada;
-    }
-
-    public void setQntVoltaCompletada(Integer qntVoltaCompletada) {
-        this.qntVoltaCompletada = qntVoltaCompletada;
-    }
-
-    public Duration getTempoTotalProva() {
-        return tempoTotalProva;
-    }
-
-    public void setTempoTotalProva(Duration tempoTotalProva) {
-        this.tempoTotalProva = tempoTotalProva;
-    }
-
-    @Override
-    public int compareTo(ResultadoCorrida resultadoCorrida) {
-        return getTempoTotalProva().compareTo(resultadoCorrida.getTempoTotalProva());
+    public void setResultadoCorridaPilotos(List<ResultadoCorridaPiloto> resultadoCorridaPilotos) {
+        this.resultadoCorridaPilotos = resultadoCorridaPilotos;
     }
 }

@@ -1,8 +1,8 @@
 package com.teste.criar.controller;
 
 import com.teste.criar.dto.ResultadoCorridaDTO;
+import com.teste.criar.dto.ResultadoCorridaPilotoDTO;
 import com.teste.criar.model.CorridaInfo;
-import com.teste.criar.model.ResultadoCorrida;
 import com.teste.criar.service.CorridaInfoService;
 import com.teste.criar.service.ResultadoCorridaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class CorridaController {
     }
 
     @GetMapping("resultadoCorrida")
-    public List<ResultadoCorridaDTO> getResultadosCorrida(){
+    public ResultadoCorridaDTO getResultadosCorrida(){
         return resultadoCorridaService.getResultadosCorrida();
     }
 }

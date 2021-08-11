@@ -1,6 +1,6 @@
 package com.teste.criar.dto;
 
-public class MelhorVoltaDTO {
+public class MelhorVoltaPilotoDTO {
 
     private Integer numeroVolta;
     private String tempoVolta;

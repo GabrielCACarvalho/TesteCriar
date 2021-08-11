@@ -1,8 +1,7 @@
 package com.teste.criar.service;
 
-import com.teste.criar.converter.CorridaInfoConverter;
+import com.teste.criar.converter.model.CorridaInfoConverter;
 import com.teste.criar.model.CorridaInfo;
-import com.teste.criar.model.ResultadoCorrida;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

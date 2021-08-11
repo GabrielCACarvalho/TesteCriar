@@ -1,7 +1,8 @@
 package com.teste.criar.service;
 
-import com.teste.criar.converter.ResultadoCorridaConverter;
-import com.teste.criar.converter.ResultadoCorridaDTOConverter;
+import com.teste.criar.converter.model.ResultadoCorridaConverter;
+import com.teste.criar.converter.model.ResultadoCorridaPilotoConverter;
+import com.teste.criar.converter.dto.ResultadoCorridaDTOConverter;
 import com.teste.criar.dto.ResultadoCorridaDTO;
 import com.teste.criar.model.CorridaInfo;
 import com.teste.criar.model.ResultadoCorrida;
@@ -14,6 +15,9 @@ import java.util.List;
 public class ResultadoCorridaService {
 
     @Autowired
+    private ResultadoCorridaPilotoConverter resultadoCorridaPilotoConverter;
+
+    @Autowired
     private ResultadoCorridaConverter resultadoCorridaConverter;
 
     @Autowired
@@ -22,9 +26,11 @@ public class ResultadoCorridaService {
     @Autowired
     private CorridaInfoService corridaInfoService;
 
-    public List<ResultadoCorridaDTO> getResultadosCorrida(){
+    public ResultadoCorridaDTO getResultadosCorrida(){
         List<CorridaInfo> corridaInfoList = corridaInfoService.getCorridaInfo();
 
-        return resultadoCorridaDTOConverter.from(resultadoCorridaConverter.from(corridaInfoList));
+        ResultadoCorrida resultadoCorrida = resultadoCorridaConverter.from(corridaInfoList);
+
+        return resultadoCorridaDTOConverter.from(resultadoCorrida);
     }
 }

@@ -1,5 +1,6 @@
-package com.teste.criar.converter;
+package com.teste.criar.converter.model;
 
+import com.teste.criar.converter.Converter;
 import com.teste.criar.model.CorridaInfo;
 import com.teste.criar.utils.TesteCriarUtils;
 import org.springframework.stereotype.Component;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class CorridaInfoConverter  implements Converter<String, List<CorridaInfo>>{
+public class CorridaInfoConverter  implements Converter<String, List<CorridaInfo>> {
     @Override
     public List<CorridaInfo> from(String log) {
         List<CorridaInfo> corridaInfoList = new ArrayList<>();
