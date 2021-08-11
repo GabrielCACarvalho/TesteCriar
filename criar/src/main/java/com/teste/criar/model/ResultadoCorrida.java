@@ -9,6 +9,15 @@ public class ResultadoCorrida  implements Comparable<ResultadoCorrida> {
     private String nomePiloto;
     private Integer qntVoltaCompletada;
     private Duration tempoTotalProva;
+    private MelhorVolta melhorVolta;
+
+    public MelhorVolta getMelhorVolta() {
+        return melhorVolta;
+    }
+
+    public void setMelhorVolta(MelhorVolta melhorVolta) {
+        this.melhorVolta = melhorVolta;
+    }
 
     public String getPosicaoChegada() {
         return posicaoChegada;

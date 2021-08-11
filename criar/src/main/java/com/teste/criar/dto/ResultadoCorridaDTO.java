@@ -7,6 +7,15 @@ public class ResultadoCorridaDTO {
     private String nomePiloto;
     private Integer qntVoltaCompletada;
     private String tempoTotalProva;
+    private MelhorVoltaDTO melhorVoltaDTO;
+
+    public MelhorVoltaDTO getMelhorVoltaDTO() {
+        return melhorVoltaDTO;
+    }
+
+    public void setMelhorVoltaDTO(MelhorVoltaDTO melhorVoltaDTO) {
+        this.melhorVoltaDTO = melhorVoltaDTO;
+    }
 
     public String getPosicaoChegada() {
         return posicaoChegada;

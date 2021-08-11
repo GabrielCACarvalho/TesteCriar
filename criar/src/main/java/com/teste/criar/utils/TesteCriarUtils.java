@@ -32,4 +32,27 @@ public class TesteCriarUtils {
         return Arrays.stream(string.trim().split("\n"))
                 .collect(Collectors.toList());
     }
+
+    public static String durationToString(Duration tempoTotalProva){
+        String tempo = tempoTotalProva.toString();
+
+        tempo = tempo.replace("PT","");
+
+        String minutos = "0";
+        String segundos = "0";
+
+        String[] tempoDividido = tempo.split("M|S");
+
+        if(tempo.contains("M")){
+            minutos = tempoDividido[0];
+        }
+
+        if (tempo.contains("S")){
+            segundos = tempoDividido[1];
+        }
+
+        String tempoConvetido = minutos + ":" + segundos;
+
+        return tempoConvetido;
+    }
 }

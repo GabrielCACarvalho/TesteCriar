@@ -1,6 +1,7 @@
 package com.teste.criar.converter;
 
 import com.teste.criar.model.CorridaInfo;
+import com.teste.criar.model.MelhorVolta;
 import com.teste.criar.model.ResultadoCorrida;
 import com.teste.criar.utils.TesteCriarUtils;
 import org.springframework.stereotype.Component;
@@ -40,22 +41,46 @@ public class ResultadoCorridaConverter implements Converter<List<CorridaInfo>, L
                     .collect(Collectors.toList());
 
             ResultadoCorrida resultadoCorrida = new ResultadoCorrida();
-            for (CorridaInfo corridaInfoAtual : corridaInfoPilotoAtual) {
-                Duration tempoTotalAtual = Duration.ofMinutes(0);
 
-                if(resultadoCorrida.getTempoTotalProva() != null)
-                    tempoTotalAtual = tempoTotalAtual.plus(resultadoCorrida.getTempoTotalProva().plus(corridaInfoAtual.getTempoVolta()));
-                else
-                    tempoTotalAtual = tempoTotalAtual.plus(corridaInfoAtual.getTempoVolta());
-
-                resultadoCorrida.setTempoTotalProva(tempoTotalAtual);
-            }
+            resultadoCorrida.setTempoTotalProva(getTempoTotalProva(corridaInfoPilotoAtual));
             resultadoCorrida.setCodigoPiloto(codigo);
             resultadoCorrida.setNomePiloto(corridaInfoPilotoAtual.get(0).getPiloto());
             resultadoCorrida.setQntVoltaCompletada(corridaInfoPilotoAtual.size());
+            resultadoCorrida.setMelhorVolta(getMelhorVolta(corridaInfoPilotoAtual));
 
             resultadosCorridas.add(resultadoCorrida);
         }
         return resultadosCorridas;
+    }
+
+    private Duration getTempoTotalProva(List<CorridaInfo> corridaInfoPilotoAtual){
+        ResultadoCorrida resultadoCorrida = new ResultadoCorrida();
+        Duration tempoTotalAtual = Duration.ofMinutes(0);
+        for (CorridaInfo corridaInfoAtual : corridaInfoPilotoAtual) {
+            if(resultadoCorrida.getTempoTotalProva() != null)
+                tempoTotalAtual = tempoTotalAtual.plus(resultadoCorrida.getTempoTotalProva().plus(corridaInfoAtual.getTempoVolta()));
+            else
+                tempoTotalAtual = tempoTotalAtual.plus(corridaInfoAtual.getTempoVolta());
+        }
+        return tempoTotalAtual;
+    }
+
+    private MelhorVolta getMelhorVolta(List<CorridaInfo> corridaInfoPilotoAtual){
+        MelhorVolta melhorVolta = new MelhorVolta();
+
+        melhorVolta.setTempoVolta(Duration.ofMinutes(0));
+            for (CorridaInfo corridaInfoComparada: corridaInfoPilotoAtual) {
+                Duration tempoComparado = melhorVolta.getTempoVolta().minus(corridaInfoComparada.getTempoVolta());
+
+                if (melhorVolta.getTempoVolta().isZero()) {
+                    melhorVolta.setTempoVolta(corridaInfoComparada.getTempoVolta());
+                    melhorVolta.setNumeroVolta(corridaInfoComparada.getNumeroVolta());
+                } else if(!(tempoComparado.isNegative())){
+                    melhorVolta.setTempoVolta(corridaInfoComparada.getTempoVolta());
+                    melhorVolta.setNumeroVolta(corridaInfoComparada.getNumeroVolta());
+                }
+        }
+
+        return melhorVolta;
     }
 }
