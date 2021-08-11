@@ -1,6 +1,8 @@
 package com.teste.criar.service;
 
 import com.teste.criar.converter.ResultadoCorridaConverter;
+import com.teste.criar.converter.ResultadoCorridaDTOConverter;
+import com.teste.criar.dto.ResultadoCorridaDTO;
 import com.teste.criar.model.CorridaInfo;
 import com.teste.criar.model.ResultadoCorrida;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +17,14 @@ public class ResultadoCorridaService {
     private ResultadoCorridaConverter resultadoCorridaConverter;
 
     @Autowired
+    private ResultadoCorridaDTOConverter resultadoCorridaDTOConverter;
+
+    @Autowired
     private CorridaInfoService corridaInfoService;
 
-    public List<ResultadoCorrida> getResultadosCorrida(){
+    public List<ResultadoCorridaDTO> getResultadosCorrida(){
         List<CorridaInfo> corridaInfoList = corridaInfoService.getCorridaInfo();
 
-        return resultadoCorridaConverter.from(corridaInfoList);
+        return resultadoCorridaDTOConverter.from(resultadoCorridaConverter.from(corridaInfoList));
     }
 }

@@ -1,5 +1,6 @@
 package com.teste.criar.controller;
 
+import com.teste.criar.dto.ResultadoCorridaDTO;
 import com.teste.criar.model.CorridaInfo;
 import com.teste.criar.model.ResultadoCorrida;
 import com.teste.criar.service.CorridaInfoService;
@@ -27,7 +28,7 @@ public class CorridaController {
     }
 
     @GetMapping("resultadoCorrida")
-    public List<ResultadoCorrida> getResultadosCorrida(){
+    public List<ResultadoCorridaDTO> getResultadosCorrida(){
         return resultadoCorridaService.getResultadosCorrida();
     }
 }
